@@ -264,7 +264,7 @@
         safe = parseInt((now - accident)/1000/60/60/24);
 
         //日報を作成
-        document.getElementById("report").innerHTML = document.getElementById("textarea").value + "<br><br><br><br>"
+        document.getElementById("report").innerHTML = document.getElementById("textarea").value.replace(/\n/g, "<br>") + "<br><br><br><br>"
             + "【総客数】" + "<br>"
             + "新規" + newCustomer + "件" + "<br>"
             + "リピータ" + repeater + "件" + "<br>"
