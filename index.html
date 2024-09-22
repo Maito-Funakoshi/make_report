@@ -292,6 +292,20 @@
 
         //日報を表示
         report.classList.remove("hidden");
+
+        // 日報データをローカルストレージに保存
+        let reports = localStorage.getItem('reports') ? JSON.parse(localStorage.getItem('reports')) : [];
+        // 新しいレポートのデータを作成
+        const newReport = {
+            date: new Date().toLocaleString(), // 現在の日時を取得
+            comment: document.getElementById("textarea").value // テキストエリアの内容
+        };
+        // 新しいレポートを配列に追加
+        reports.push(newReport);
+        // ローカルストレージに保存
+        localStorage.setItem('reports', JSON.stringify(reports));
+        // 最後に追加されたレポートを表示
+        console.log(reports[reports.length - 1]);
     });
 
     function copyToClipboard(text) {
