@@ -256,8 +256,6 @@
         reader.readAsArrayBuffer(file);
     });
 
-    // 日報データをローカルストレージに保存
-    let reports = localStorage.getItem('reports') ? JSON.parse(localStorage.getItem('reports')) : [];
     document.querySelector("#make").addEventListener("click", () => {
         //2回ボタンを押しても日報が二つ表示されないようにid="report"内を空にする
         document.getElementById("report").innerHTML = "";
@@ -294,19 +292,7 @@
 
         //日報を表示
         report.classList.remove("hidden");
-
-        // 新しいレポートのデータを作成
-        const newReport = {
-            date: new Date().toLocaleString(),
-            comment: document.getElementById("textarea").value
-        };
-        // 新しいレポートを配列に追加
-        reports.push(newReport);
-        // ローカルストレージに保存
-        localStorage.setItem('reports', JSON.stringify(reports));
     });
-    // 最後に追加されたレポートを表示
-    console.log(reports);
 
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text)
